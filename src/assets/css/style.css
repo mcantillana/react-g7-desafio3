@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+.title {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #CCC;
+}
+
+.container {
+  margin-top: 60px; 
+}
+.search-input {
+  margin-bottom: 20px;
+}
+
+.character-row td {
+  border-bottom: 1px solid white;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.controls div {
+  cursor: pointer;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}

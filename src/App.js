@@ -1,25 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Home from './views/Home';
+import Form from './views/Form';
+import './assets/css/style.css';
+import store from './store/store';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
+
+const {Provider} = store;
+
 
 function App() {
+  
+  const heroes = [
+      { name: 'Gandalf', race: 'Maia', age: '2019', weapon: 'Staff 🏑'},
+      { name: 'Aragorn', race: 'Human', age: '120', weapon: 'Sword ⚔'},
+      { name: 'Legolas', race: 'Elf', age: '200', weapon: 'Bow 🏹'},
+      { name: 'Gimli', race: 'Dwarf', age: '139', weapon: 'Axe ⚒'},
+
+  ]
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider value={heroes}>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/form" component={Form} />        
+        </Switch>  
+      </BrowserRouter>
+    </Provider>
   );
 }
 
