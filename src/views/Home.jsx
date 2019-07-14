@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import HeroTable from '../components/HeroTable';
-
-
 
 
 function Home() {
@@ -24,6 +21,9 @@ function Home() {
   ]
   const [heroes, setHero] = useState(obj_heroes);
   const [form, setForm] = useState(defaultHeroes);
+
+
+
   const handlerOnChange = ({target}) => {
       setForm({
           ...form,
@@ -33,8 +33,8 @@ function Home() {
 
   const handlerOnSubmit = event => {
       event.preventDefault();
-      console.log(heroes);
       setHero(heroes.concat(form));
+      console.log(heroes);
       setForm(defaultHeroes);
   }
 
@@ -71,7 +71,7 @@ function Home() {
 
               <div className="form-group">
                 <label htmlFor="age">Age</label>
-                <input required onChange={handlerOnChange} type="text" className="form-control" id="age" placeholder="Age" value={form.age} name={'age'}/>
+                <input required onChange={handlerOnChange} type="number" className="form-control" id="age" placeholder="Age" value={form.age} name={'age'}/>
               </div>
 
               <div className="form-group">
