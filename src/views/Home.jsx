@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import HeroTable from '../components/HeroTable';
+import HeroForm from '../components/HeroForm';
 
 
-function Home() {
+const Home = (props) => {
   
   const defaultHeroes = {
       name: '',
@@ -21,7 +22,7 @@ function Home() {
   ]
   const [heroes, setHero] = useState(obj_heroes);
   const [form, setForm] = useState(defaultHeroes);
-
+  
 
 
   const handlerOnChange = ({target}) => {
@@ -33,9 +34,11 @@ function Home() {
 
   const handlerOnSubmit = event => {
       event.preventDefault();
+
       setHero(heroes.concat(form));
       console.log(heroes);
       setForm(defaultHeroes);
+
   }
 
 
@@ -43,11 +46,8 @@ function Home() {
     <div className="container">
      
         <div className="row mb-4">
-            <div className="col-10">
+            <div className="col-12">
                 <h1 className="title">Heros App</h1>
-            </div>
-            <div className="col-2">
-              {/*<Link to="/form" className="btn btn-primary btn-block btn-lg">Agregar Hero</Link>*/}
             </div>
         </div>
         <div className="row">
@@ -57,30 +57,11 @@ function Home() {
         
           </div>
           <div className="col-6">
-            <h2>Agregar nuevo Hero</h2>
-            <form onSubmit={handlerOnSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input required onChange={handlerOnChange} type="text" className="form-control" id="name" placeholder="Name" value={form.name}  name={'name'}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="race">Race</label>
-                <input required onChange={handlerOnChange} type="text" className="form-control" id="race" placeholder="Race" value={form.race} name={'race'}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="age">Age</label>
-                <input required onChange={handlerOnChange} type="number" className="form-control" id="age" placeholder="Age" value={form.age} name={'age'}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="weapon">Weapon</label>
-                <input required onChange={handlerOnChange} type="text" className="form-control" id="weapon" placeholder="Weapon" value={form.weapon}  name={'weapon'}/>
-              </div>
-              <hr />
-              <button type="submit" className="btn btn-primary btn-block btn-lg">Guardar Hero</button>
-            </form>
+            <HeroForm
+              form={form} 
+              handlerOnSubmit={handlerOnSubmit} 
+              handlerOnChange={handlerOnChange}
+            />
           </div>
 
         </div>
